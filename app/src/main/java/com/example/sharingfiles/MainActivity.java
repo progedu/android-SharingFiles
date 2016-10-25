@@ -54,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Get a regular file descriptor for the file
         FileDescriptor fd = mInputPFD.getFileDescriptor();
-        
+
+        String mimeType = getContentResolver().getType(returnUri);
+        Log.d("MainActivity", "mimeType: " + mimeType);
     }
 }
