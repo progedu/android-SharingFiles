@@ -1,8 +1,10 @@
 package com.example.sharingfiles;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,5 +59,13 @@ public class MainActivity extends AppCompatActivity {
 
         String mimeType = getContentResolver().getType(returnUri);
         Log.d("MainActivity", "mimeType: " + mimeType);
+
+        Cursor returnCursor =
+                getContentResolver().query(returnUri, null, null, null, null);
+        returnCursor.moveToFirst();
+        int nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+        Log.d("MainActivity", "name: " + returnCursor.getString(nameIndex));
+        int sizeIndex = returnCursor.getColumnIndex(OpenableColumns.SIZE);
+        Log.d("MainActivity", "size: " + Long.toString(returnCursor.getLong(sizeIndex)));
     }
 }
