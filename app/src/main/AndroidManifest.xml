@@ -14,17 +14,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
-            <provider
-                android:name="android.support.v4.content.FileProvider"
-                android:authorities="com.example.sharingfiles.fileprovider"
-                android:exported="false"
-                android:grantUriPermissions="true">
-                <meta-data
-                    android:name="android.support.FILE_PROVIDER_PATHS"
-                    android:resource="@xml/filepaths" />
-            </provider>
         </activity>
+
         <activity android:name=".FileSelectActivity">
             <intent-filter>
                 <action
@@ -37,6 +28,15 @@
                 <data android:mimeType="image/*"/>
             </intent-filter>
         </activity>
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.sharingfiles.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 </manifest>
