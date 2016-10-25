@@ -1,5 +1,6 @@
 package com.example.sharingfiles;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
@@ -13,6 +14,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 
 public class FileSelectActivity extends AppCompatActivity {
+
+    private Intent mResultIntent =
+            new Intent("com.example.sharingfiles.ACTION_RETURN_FILE");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +49,9 @@ public class FileSelectActivity extends AppCompatActivity {
                 FileSelectActivity.this,
                 "com.example.sharingfiles.fileprovider",
                 newFile);
+
+        mResultIntent.addFlags(
+                Intent.FLAG_GRANT_READ_URI_PERMISSION);
     }
 
     public void select(View view) {
