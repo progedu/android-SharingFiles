@@ -46,12 +46,6 @@ public class FileSelectActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        // Created File Log
-        File[] files = imagePath.listFiles();
-        for(File file: files) {
-            Log.d("File in images:", file.toString());
-        }
-
         // Sharing Setting
         Uri fileUri = FileProvider.getUriForFile(
                 FileSelectActivity.this,
