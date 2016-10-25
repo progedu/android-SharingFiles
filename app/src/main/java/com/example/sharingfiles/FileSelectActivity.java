@@ -1,5 +1,6 @@
 package com.example.sharingfiles;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
@@ -52,9 +53,14 @@ public class FileSelectActivity extends AppCompatActivity {
 
         mResultIntent.addFlags(
                 Intent.FLAG_GRANT_READ_URI_PERMISSION);
+
+        mResultIntent.setDataAndType(
+                fileUri,
+                getContentResolver().getType(fileUri));
+        setResult(Activity.RESULT_OK, mResultIntent);
     }
 
     public void select(View view) {
-
+        finish();
     }
 }
